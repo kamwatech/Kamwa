@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="image/10.png" type="image/10.png">
+    <title>kamwatech</title>
+    <style>/* Variables pour les couleurs - Nouvelle palette */
+:root {
+    --primary-color: #4CAF50; /* Vert feuille */
+    --secondary-color: #FFFF00; /* couleur du titre */
+    --tertiary-color: #4CAF50; /* Brun recyclage */
+    --dark-color: #4CAF50; /* Noir doux */
+    --light-color: #FAFAF8; /* Blanc cassé */
+    --bg-light: #FAFAF8; /* Fond clair - Blanc cassé */
+    --bg-alternate: #E0E0E0; /* Gris doux pour sections alternées */
+    --text-color: #000; /* Noir doux */
+    --header-height: 70px; /* Hauteur de l'en-tête */
+    
+    --hover-primary: #43A047; /* Hover pour vert */
+    --hover-link: #388E3C; /* Hover pour liens */
+    
+    --transition-speed: 0.3s;
+    --border-radius: 8px;
+}
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height); /* Ajustement pour le header fixe */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-light);
+    margin: 0;
+    padding-top: var(--header-height); /* Espace pour le header fixe */
+}
+
+/* Conteneur */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* En-tête */
+header {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+/* Style du logo pour le rendre responsive */
+.logo img {
+    height: var(--header-height); /* Le logo ne dépassera pas la hauteur de l'en-tête */
+    max-width: 100%; /* S'assure que le logo ne déborde jamais de son conteneur */
+    display: block; /* Supprime l'espace sous l'image */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--secondary-color);
+}
+
+.language-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.language-toggle button {
+    background: none;
+    border: none;
+    color: var(--light-color);
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.7;
+    transition: opacity var(--transition-speed);
+}
+
+.language-toggle button.active {
+    opacity: 1;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--light-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* Boutons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    border: none;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+.btn.primary:hover {
+    background-color: var(--hover-primary);
+    transform: translateY(-2px);
+}
+
+.btn.secondary {
+    background-color: var(--tertiary-color);
+    color: var(--light-color);
+}
+
+.btn.secondary:hover {
+    background-color: #7D5D53;
+    transform: translateY(-2px);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* Sections */
+section {
+    padding: 80px 0;
+}
+
+section:nth-child(even) {
+    background-color: var(--bg-alternate);
+}
+
+section:nth-child(odd) {
+    background-color: var(--light-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.2rem;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 4px;
+    background-color: var(--tertiary-color);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+/* Section Héros */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('/images/Inspiration.jpg') center/cover;
+    color: var(--light-color);
+    text-align: center;
+    padding: 120px 0;
+}
+
+.hero .slogan {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero .sub-slogan {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Section À propos */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.about-text ul li {
+    margin-bottom: 10px;
+}
+
+/* Section Participer */
+.participation-options {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.participation-card {
+    flex: 1;
+    min-width: 250px;
+    background-color: var(--light-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed);
+}
+
+.participation-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Section Soutenir */
+.support-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.support-card {
+    flex: 1;
+    min-width: 250px;
+    background-color: var(--light-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed);
+    text-align: center;
+}
+
+.support-card:hover {
+    transform: translateY(-5px);
+}
+
+.materials-needed {
+    background-color: rgba(76, 175, 80, 0.1);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    margin-top: 30px;
+}
+
+.materials-list {
+    columns: 2;
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+.materials-list li {
+    margin-bottom: 10px;
+}
+
+/* Section Galerie */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.gallery-item {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.gallery-item h3, .gallery-item p {
+    padding: 0 20px;
+}
+
+.gallery-item h3 {
+    margin-top: 20px;
+}
+
+.gallery-item p {
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* Section Contact */
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.contact-item i {
+    font-size: 24px;
+    color: var(--secondary-color);
+    margin-right: 15px;
+    width: 24px;
+}
+
+.social-media {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-media a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    transition: all var(--transition-speed);
+}
+
+.social-media a:hover {
+    background-color: var(--hover-primary);
+    transform: translateY(-3px);
+}
+
+/* Formulaire */
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--light-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    transition: border-color var(--transition-speed);
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Pied de page */
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 50px 0 30px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.footer-tagline {
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.copyright {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+    .hero .slogan {
+        font-size: 2.5rem;
+    }
+    
+    .materials-list {
+        columns: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 0 15px;
+    }
+    
+    .menu-icon {
+        display: block;
+        margin-left: auto;
+        margin-right: 60px; /* Espace pour le toggle de langue */
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--dark-color);
+        flex-direction: column;
+        padding: 30px;
+        transition: right var(--transition-speed);
+        z-index: 999;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links a {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: block;
+    }
+    
+    .hero .slogan {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .participation-card,
+    .support-card {
+        min-width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .language-toggle {
+        right: 15px;
+    }
+    
+    .hero {
+        padding: 80px 0;
+    }
+    
+    .hero .slogan {
+        font-size: 1.8rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+    }
+}
+/* Section Campagnes & Publicités */
+.campaigns .section-intro,
+.posters .section-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-tab {
+    background-color: var(--bg-alternate);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all var(--transition-speed);
+}
+
+.filter-tab:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.filter-tab.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.campaigns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.campaign-item {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform var(--transition-speed);
+}
+
+.campaign-item:hover {
+    transform: translateY(-5px);
+}
+
+.campaign-media {
+    padding: 15px;
+}
+
+.campaign-info {
+    padding: 20px;
+}
+
+.campaign-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.campaign-meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.campaign-actions {
+    display: flex;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--bg-alternate);
+    color: var(--text-color);
+    transition: all var(--transition-speed);
+}
+
+.btn-icon:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.section-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Section Affiches Officielles */
+.
+.posters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.poster-item {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform var(--transition-speed);
+}
+
+.poster-item:hover {
+    transform: translateY(-5px);
+}
+/* --- Section affiches officielles --- */
+.poster-image {
+  width: 100%;
+  height: auto;              /* Permet à l'image de conserver son ratio */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;        /* couleur si pas d'image */
+}
+
+.poster-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;        /* Redimensionne l'image pour qu'elle soit entièrement visible */
+  display: block;
+}
+
+.poster-info {
+    padding: 20px;
+}
+
+.poster-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.poster-info p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.poster-meta {
+    display: flex;
+    align-items: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.poster-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+@media (min-width: 992px) {
+  /* Pour les écrans de bureau et plus grands */
+  .posters .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  
+  .posters .filter-controls {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky; /* rend les filtres fixes pendant le défilement */
+    top: calc(var(--header-height) + 20px);
+  }
+  
+  .posters-grid {
+    flex: 3;
+    min-width: 0; /* Important pour que l'élément se réduise correctement */
+  }
+}
+
+.btn-sm {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* Responsive for new sections */
+@media screen and (max-width: 768px) {
+    .campaigns-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-tabs {
+        gap: 5px;
+    }
+    
+    .filter-tab {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .filter-controls {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}
+/* Style de la section d'accueil avec l'image en arrière-plan */
+.hero {
+    background-image: url('11.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 60vh; /* La section prendra toute la hauteur de l'écran */
+    color: white; /* Pour que le texte soit lisible */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1; /* S'assure que le contenu est au-dessus de l'image de fond */
+}
+
+/* Optionnel : Ajoute un dégradé de couleur pour rendre le texte plus lisible */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Un dégradé noir semi-transparent */
+    z-index: -1;
+}
+
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- En-tête fixe -->
+    <header>
+        <div class="logo"> <a href="#" class="logo">
+    <img src="5.png" alt="Logo de KAMWA">
+</a>
+</div>
+        <div class="language-toggle">
+            <button id="lang-fr" class="active">FR</button>
+            <span>|</span>
+            <button id="lang-en">EN</button>
+        </div>
+        <nav>
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li><a href="#about" data-fr="À propos" data-en="About">À propos</a></li>
+                <li><a href="#participate" data-fr="Participer" data-en="Participate">Participer</a></li>
+                <li><a href="#support" data-fr="Soutenir" data-en="Support">Soutenir</a></li>
+                <li><a href="#gallery" data-fr="Galerie" data-en="Gallery">Galerie</a></li>
+                <li><a href="#campaigns" data-fr="Campagnes" data-en="Campaigns">Campagnes</a></li>
+                <li><a href="#posters" data-fr="Affiches" data-en="Posters">Affiches</a></li>
+                <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section Accueil -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h1 class="slogan" data-fr="Libérer le génie inventif des jeunes togolais" data-en="Unleashing the inventive genius of young Togolese">Libérer le génie inventif des jeunes togolais</h1>
+                <p class="sub-slogan" data-fr="Ensemble, construisons un avenir innovant et durable" data-en="Together, let's build an innovative and sustainable future">Ensemble, construisons un avenir innovant et durable</p>
+                <div class="cta-buttons">
+                    <a href="#participate" class="btn primary" data-fr="Participer" data-en="Participate">Participer</a>
+                    <a href="#support" class="btn secondary" data-fr="Faire un don" data-en="Donate">Faire un don</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section À propos -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 data-fr="À propos de KAMWA" data-en="About KAMWA">À propos de KAMWA</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3 data-fr="Contexte" data-en="Context">Contexte</h3>
+                        <p data-fr="KAMWA est né d'un constat simple : le Togo regorge de jeunes talents créatifs dont les innovations restent souvent méconnues faute de soutien et de visibilité." 
+                           data-en="KAMWA was born from a simple observation: Togo is full of creative young talents whose innovations often remain unknown due to lack of support and visibility.">
+                            KAMWA est né d'un constat simple : le Togo regorge de jeunes talents créatifs dont les innovations restent souvent méconnues faute de soutien et de visibilité.
+                        </p>
+
+                        <h3 data-fr="Justification" data-en="Justification">Justification</h3>
+                        <p data-fr="Dans un monde où l'innovation technologique est au cœur du développement durable, il est essentiel de valoriser les solutions locales imaginées par les jeunes, particulièrement celles utilisant des matériaux recyclés et adaptées au contexte africain." 
+                           data-en="In a world where technological innovation is at the heart of sustainable development, it is essential to promote local solutions imagined by young people, particularly those using recycled materials and adapted to the African context.">
+                            Dans un monde où l'innovation technologique est au cœur du développement durable, il est essentiel de valoriser les solutions locales imaginées par les jeunes, particulièrement celles utilisant des matériaux recyclés et adaptées au contexte africain.
+                        </p>
+
+                        <h3 data-fr="Objectifs" data-en="Objectives">Objectifs</h3>
+                        <ul>
+                            <li data-fr="Identifier et accompagner les jeunes inventeurs togolais" data-en="Identify and support young Togolese inventors">Identifier et accompagner les jeunes inventeurs togolais</li>
+                            <li data-fr="Promouvoir l'innovation durable et l'économie circulaire" data-en="Promote sustainable innovation and circular economy">Promouvoir l'innovation durable et l'économie circulaire</li>
+                            <li data-fr="Créer un réseau de soutien technique et financier" data-en="Create a network of technical and financial support">Créer un réseau de soutien technique et financier</li>
+                            <li data-fr="Exposer les inventions locales sur la scène internationale" data-en="Showcase local inventions on the international stage">Exposer les inventions locales sur la scène internationale</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Participer -->
+        <section id="participate" class="participate">
+            <div class="container">
+                <h2 data-fr="Participer au projet" data-en="Participate in the project">Participer au projet</h2>
+                <div class="participation-options">
+                    <div class="participation-card">
+                        <h3 data-fr="Je suis un jeune inventeur" data-en="I am a young inventor">Je suis un jeune inventeur</h3>
+                        <p data-fr="Tu as entre 12 et 25 ans, tu as créé ou as une idée d'invention ? Rejoins-nous !" 
+                           data-en="Are you between 12 and 25 years old, have you created or have an idea for an invention? Join us!">
+                            Tu as entre 12 et 25 ans, tu as créé ou as une idée d'invention ? Rejoins-nous !
+                        </p>
+                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSe6GAdbQQ3mERyJ4rgKejwQlfRuNflE8O9uhwxMCv8bCNqBKQ/viewform?usp=header"
+                         target="_blank" 
+                         class="btn-participation"
+                         data-fr="Remplir le formulaire" 
+                         data-en="Fill the form">
+                         Remplir le formulaire
+                      </a>
+                    </div>
+                    <div class="participation-card">
+                        <h3 data-fr="Je veux être volontaire" data-en="I want to volunteer">Je veux être volontaire</h3>
+                        <p data-fr="Tu souhaites partager tes compétences techniques, pédagogiques ou organisationnelles ? Nous avons besoin de toi !" 
+                           data-en="Do you want to share your technical, educational, or organizational skills? We need you!">
+                            Tu souhaites partager tes compétences techniques, pédagogiques ou organisationnelles ? Nous avons besoin de toi !
+                        </p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe6GAdbQQ3mERyJ4rgKejwQlfRuNflE8O9uhwxMCv8bCNqBKQ/viewform?usp=header"
+                         target="_blank" 
+                         class="btn-participation"
+                         data-fr="Remplir le formulaire" 
+                         data-en="Fill the form">
+                         Remplir le formulaire
+                      </a>
+                        
+                    </div>
+                    <div class="participation-card">
+                    <h3 data-fr="Je suis étudiant" data-en="I am a student">Je suis étudiant</h3>
+                    <p data-fr="Tu suis des études en sciences, technologie, ingénierie, design ou domaine lié à l’innovation ? Rejoins-nous pour apprendre, encadrer et prototyper avec des équipes mixtes."
+                       data-en="Are you studying science, technology, engineering, design or a related field? Join us to learn, mentor and prototype with mixed teams.">
+                      Tu suis des études en sciences, technologie, ingénierie, design ou domaine lié à l’innovation ? Rejoins-nous pour apprendre, encadrer et prototyper avec des équipes mixtes.
+                    </p>
+                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzqpUY3PNjSl_eYtANei1HUA0yNhCroto3vQvHy9CqU70Lqg/viewform?usp=header" 
+                       target="_blank" 
+                       class="btn-participation"
+                       data-fr="Remplir le formulaire" 
+                       data-en="Fill the form">
+                       Remplir le formulaire
+                      </a>
+                  </div>
+                  
+                  <div class="participation-card">
+                    <h3 data-fr="Je suis formateur volontaire" data-en="I am a volunteer trainer">Je suis formateur volontaire</h3>
+                    <p data-fr="Enseignant(e), ingénieur(e) ou expert(e) technique ? Partagez vos compétences lors d’ateliers pratiques et mentorats pour former les jeunes inventeurs."
+                       data-en="Teacher, engineer or technical expert? Share your skills through practical workshops and mentorship to train young inventors.">
+                      Enseignant(e), ingénieur(e) ou expert(e) technique ? Partagez vos compétences lors d’ateliers pratiques et mentorats pour former les jeunes inventeurs.
+                    </p>
+                     <a href="https://docs.google.com/forms/d/e/1FAIpQLScEIbhbqFJJ07iMvLATL6fERaXv9H3CLrzfcg3YjFwZXAm08Q/viewform?usp=header" 
+                       target="_blank" 
+                       class="btn-participation"
+                       data-fr="Remplir le formulaire" 
+                       data-en="Fill the form">
+                       Remplir le formulaire
+                    </a>
+                  </div>
+                    
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section Soutenir -->
+        <section id="support" class="support">
+            <div class="container">
+                <h2 data-fr="Soutenir KAMWA" data-en="Support KAMWA">Soutenir KAMWA</h2>
+                <div class="support-content">
+                    <div class="support-text">
+                        <p data-fr="Votre soutien est essentiel pour permettre aux jeunes inventeurs de concrétiser leurs projets. Plusieurs façons de nous aider :" 
+                           data-en="Your support is essential to help young inventors bring their projects to life. Several ways to help us:">
+                            Votre soutien est essentiel pour permettre aux jeunes inventeurs de concrétiser leurs projets. Plusieurs façons de nous aider :
+                        </p>
+                    </div>
+
+                    <div class="support-options">
+                        <div class="support-card">
+                            <h3 data-fr="Don financier" data-en="Financial donation">Don financier</h3>
+                            <p data-fr="Chaque contribution permet d'acheter du matériel et de financer les ateliers" 
+                               data-en="Each contribution helps purchase equipment and fund workshops">
+                                Chaque contribution permet d'acheter du matériel et de financer les ateliers
+                            </p>
+                            <a href="https://chat.whatsapp.com/Jfq0fenBMm77pZN418xoWx?mode=ems_copy_t" class="btn secondary" data-fr="Faire un don" data-en="Donate">Faire un don</a>
+                        </div>
+                        <div class="support-card">
+                            <h3 data-fr="Don de matériaux" data-en="Material donation">Don de matériaux</h3>
+                            <p data-fr="Nous collectons les matériaux recyclables pour alimenter la créativité des inventeurs" 
+                               data-en="We collect recyclable materials to fuel inventors' creativity">
+                                Nous collectons les matériaux recyclables pour alimenter la créativité des inventeurs
+                            </p>
+                             <a href="https://chat.whatsapp.com/Jfq0fenBMm77pZN418xoWx?mode=ems_copy_t" class="btn secondary" data-fr="Faire un don" data-en="Donate">Faire un don</a>
+                        </div>
+                        <div class="support-card">
+                            <h3 data-fr="Partenariats" data-en="Partnerships">Partenariats</h3>
+                            <p data-fr="Entreprises, écoles, institutions : rejoignez l'aventure KAMWA" 
+                               data-en="Companies, schools, institutions: join the KAMWA adventure">
+                                Entreprises, écoles, institutions : rejoignez l'aventure KAMWA
+                            </p>
+                             <a href="https://chat.whatsapp.com/Ce9TIrGmAfUCBbgVWw8anm?mode=ems_copy_t" class="btn secondary" data-fr="Partenariats" data-en="Donate">Faire un don</a>
+                        </div>
+                    </div>
+
+                    <div class="materials-needed">
+                        <h3 data-fr="Matériaux recherchés" data-en="Materials needed">Matériaux recherchés</h3>
+                        <ul class="materials-list">
+                            <li data-fr="Composants électroniques (même défectueux)" data-en="Electronic components (even defective)">Composants électroniques (même défectueux)</li>
+                            <li data-fr="Plastiques divers" data-en="Various plastics">Plastiques divers</li>
+                            <li data-fr="Métaux et pièces métalliques" data-en="Metals and metal parts">Métaux et pièces métalliques</li>
+                            <li data-fr="Bois et matériaux naturels" data-en="Wood and natural materials">Bois et matériaux naturels</li>
+                            <li data-fr="Tissus et textiles" data-en="Fabrics and textiles">Tissus et textiles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Galerie -->
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2 data-fr="Galerie des inventions" data-en="Invention gallery">Galerie des inventions</h2>
+                <div class="gallery-grid">
+                    <!-- Les images sont remplaçables facilement ici -->
+                    <div class="gallery-item">
+                        <div class="gallery-image" style="background-color: var(--secondary-color);"></div>
+                        <h3 data-fr="Lampe solaire portable" data-en="Portable solar lamp">Lampe solaire portable</h3>
+                        <p data-fr="Par Kokou, 16 ans" data-en="By Kokou, 16 years old">Par Kokou, 16 ans</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-image" style="background-color: var(--primary-color);"></div>
+                        <h3 data-fr="Filtre à eau écologique" data-en="Ecological water filter">Filtre à eau écologique</h3>
+                        <p data-fr="Par Ama, 14 ans" data-en="By Ama, 14 years old">Par Ama, 14 ans</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-image" style="background-color: var(--tertiary-color);"></div>
+                        <h3 data-fr="Mini éolienne urbaine" data-en="Urban mini wind turbine">Mini éolienne urbaine</h3>
+                        <p data-fr="Par Edem, 17 ans" data-en="By Edem, 17 years old">Par Edem, 17 ans</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-image" style="background-color: var(--secondary-color);"></div>
+                        <h3 data-fr="Robot agricole" data-en="Agricultural robot">Robot agricole</h3>
+                        <p data-fr="Par Séna, 15 ans" data-en="By Séna, 15 years old">Par Séna, 15 ans</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-image" style="background-color: var(--primary-color);"></div>
+                        <h3 data-fr="Purificateur d'air naturel" data-en="Natural air purifier">Purificateur d'air naturel</h3>
+                        <p data-fr="Par Kossi, 18 ans" data-en="By Kossi, 18 years old">Par Kossi, 18 ans</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-image" style="background-color: var(--tertiary-color);"></div>
+                        <h3 data-fr="Système d'irrigation intelligent" data-en="Smart irrigation system">Système d'irrigation intelligent</h3>
+                        <p data-fr="Par Akoua, 16 ans" data-en="By Akoua, 16 years old">Par Akoua, 16 ans</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Campagnes & Publicités -->
+        <section id="campaigns" class="campaigns">
+            <div class="container">
+                <h2 data-fr="Nos Campagnes & Publicités" data-en="Our Campaigns & Ads">Nos Campagnes & Publicités</h2>
+                <p class="section-intro" data-fr="Découvrez les vidéos, spots audio et visuels de sensibilisation produits pour le projet KAMWA." 
+                   data-en="Discover the videos, audio spots and awareness visuals produced for the KAMWA project.">
+                   Découvrez les vidéos, spots audio et visuels de sensibilisation produits pour le projet KAMWA.
+                </p>
+
+                <!-- Filtres -->
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all" data-fr="Tous" data-en="All">Tous</button>
+                    <button class="filter-tab" data-filter="video" data-fr="Vidéos" data-en="Videos">Vidéos</button>
+                    <button class="filter-tab" data-filter="audio" data-fr="Audio" data-en="Audio">Audio</button>
+                    <button class="filter-tab" data-filter="visual" data-fr="Visuels" data-en="Visuals">Visuels</button>
+                </div>
+
+                <div class="campaigns-grid">
+                    <!-- Vidéos -->
+                    <div class="campaign-item" data-category="video">
+                        <div class="campaign-media">
+                            <!-- Placeholder pour vidéo YouTube -->
+                            <div class="video-embed" style="background-color: var(--bg-alternate); height: 200px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fab fa-youtube" style="font-size: 48px; color: var(--primary-color);"></i>
+                            </div>
+                        </div>
+                        <div class="campaign-info">
+                            <h3 data-fr="Campagne 'Un souffle pour l'avenir'" data-en="'A Breath for the Future' Campaign">Campagne "Un souffle pour l'avenir"</h3>
+                            <div class="campaign-meta">
+                                <span class="campaign-date" data-fr="Avril 2025" data-en="April 2025">Avril 2025</span>
+                                <span class="campaign-channel" data-fr="Diffusé sur TV Togo et YouTube" data-en="Broadcasted on TV Togo and YouTube">Diffusé sur TV Togo et YouTube</span>
+                            </div>
+                            <p data-fr="Vidéo de sensibilisation sur l'importance de l'innovation écologique au Togo." 
+                               data-en="Awareness video on the importance of ecological innovation in Togo.">
+                               Vidéo de sensibilisation sur l'importance de l'innovation écologique au Togo.
+                            </p>
+                            <div class="campaign-actions">
+                                <a href="#" class="btn-icon" title="Partager" data-fr-title="Partager" data-en-title="Share">
+                                    <i class="fas fa-share-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audio -->
+                    <div class="campaign-item" data-category="audio">
+                        <div class="campaign-media">
+                            <!-- Lecteur audio stylisé -->
+                            <div class="audio-player" style="background-color: var(--bg-alternate); padding: 20px; border-radius: var(--border-radius);">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <button class="play-button" style="background-color: var(--primary-color); color: white; width: 40px; height: 40px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <div class="audio-progress" style="height: 6px; flex-grow: 1; background-color: #ddd; border-radius: 3px; position: relative;">
+                                        <div style="position: absolute; width: 30%; height: 100%; background-color: var(--primary-color); border-radius: 3px;"></div>
+                                    </div>
+                                    <span class="audio-time">0:30</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="campaign-info">
+                            <h3 data-fr="Spot radio KAMWA" data-en="KAMWA Radio Spot">Spot radio KAMWA</h3>
+                            <div class="campaign-meta">
+                                <span class="campaign-date" data-fr="Mai 2025" data-en="May 2025">Mai 2025</span>
+                                <span class="campaign-channel" data-fr="Diffusé sur Radio Lomé" data-en="Broadcasted on Radio Lomé">Diffusé sur Radio Lomé</span>
+                            </div>
+                            <p data-fr="Jingle promotionnel pour l'appel à candidatures des jeunes inventeurs." 
+                               data-en="Promotional jingle for the call for applications from young inventors.">
+                               Jingle promotionnel pour l'appel à candidatures des jeunes inventeurs.
+                            </p>
+                            <div class="campaign-actions">
+                                <a href="#" class="btn-icon" title="Télécharger" data-fr-title="Télécharger" data-en-title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                                <a href="#" class="btn-icon" title="Partager" data-fr-title="Partager" data-en-title="Share">
+                                    <i class="fas fa-share-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visuel -->
+                    <div class="campaign-item" data-category="visual">
+                        <div class="campaign-media">
+                            <!-- Placeholder pour image -->
+                            <div class="image-container" style="background-color: var(--secondary-color); height: 200px; display: flex; align-items: center; justify-content: center; border-radius: var(--border-radius);">
+                                <i class="far fa-image" style="font-size: 48px; color: white;"></i>
+                            </div>
+                        </div>
+                        <div class="campaign-info">
+                            <h3 data-fr="Affiche 'Inventeurs de demain'" data-en="'Inventors of Tomorrow' Poster">Affiche "Inventeurs de demain"</h3>
+                            <div class="campaign-meta">
+                                <span class="campaign-date" data-fr="Juin 2025" data-en="June 2025">Juin 2025</span>
+                                <span class="campaign-channel" data-fr="Réseaux sociaux et écoles" data-en="Social networks and schools">Réseaux sociaux et écoles</span>
+                            </div>
+                            <p data-fr="Campagne visuelle présentant des jeunes togolais et leurs inventions innovantes." 
+                               data-en="Visual campaign featuring young Togolese and their innovative inventions.">
+                               Campagne visuelle présentant des jeunes togolais et leurs inventions innovantes.
+                            </p>
+                            <div class="campaign-actions">
+                                <a href="#" class="btn-icon" title="Télécharger" data-fr-title="Télécharger" data-en-title="Download">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                                <a href="#" class="btn-icon" title="Partager" data-fr-title="Partager" data-en-title="Share">
+                                    <i class="fas fa-share-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vidéos -->
+                    <div class="campaign-item" data-category="video">
+                        <div class="campaign-media">
+                            <!-- Placeholder pour vidéo TikTok -->
+                            <div class="video-embed" style="background-color: var(--bg-alternate); height: 200px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fab fa-tiktok" style="font-size: 48px; color: var(--tertiary-color);"></i>
+                            </div>
+                        </div>
+                        <div class="campaign-info">
+                            <h3 data-fr="Challenge TikTok 'Innove avec KAMWA'" data-en="'Innovate with KAMWA' TikTok Challenge">Challenge TikTok "Innove avec KAMWA"</h3>
+                            <div class="campaign-meta">
+                                <span class="campaign-date" data-fr="Mars 2025" data-en="March 2025">Mars 2025</span>
+                                <span class="campaign-channel" data-fr="TikTok et Instagram" data-en="TikTok and Instagram">TikTok et Instagram</span>
+                            </div>
+                            <p data-fr="Série de vidéos courtes montrant comment transformer des objets du quotidien." 
+                               data-en="Series of short videos showing how to transform everyday objects.">
+                               Série de vidéos courtes montrant comment transformer des objets du quotidien.
+                            </p>
+                            <div class="campaign-actions">
+                                <a href="#" class="btn-icon" title="Partager" data-fr-title="Partager" data-en-title="Share">
+                                    <i class="fas fa-share-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-footer">
+                    <a href="#" class="btn secondary" data-fr="Voir toutes nos campagnes" data-en="View all our campaigns">Voir toutes nos campagnes</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Affiches Officielles -->
+        <section id="posters" class="posters">
+            <div class="container">
+                <h2 data-fr="Nos Affiches Officielles" data-en="Our Official Posters">Nos Affiches Officielles</h2>
+                <p class="section-intro" data-fr="Téléchargez et partagez nos affiches de sensibilisation, d'événements et de mobilisation." 
+                   data-en="Download and share our awareness, event and mobilization posters.">
+                   Téléchargez et partagez nos affiches de sensibilisation, d'événements et de mobilisation.
+                </p>
+
+                <div class="posters-grid">
+                    <!-- Affiche 1 -->
+                    <div class="poster-item" data-month="april" data-theme="registration">
+                      <div class="poster-image">
+                        <img src="6.png" alt="Affiche Appel à candidatures">
+                      </div>
+                      <div class="poster-info">
+                        <h3 data-fr="Appel à candidatures" data-en="Join the KAMWA mouvement">Rejoignez le mouvement KAMWA.</h3>
+                        <p data-fr="Ils n'ont ni atelier, ni laboratoire... mais ils ont des idées qui brillent." 
+                           data-en="They have no workshop, no laboratory... but they have brilliant ideas..">
+                           Ils n'ont ni atelier, ni laboratoire... mais ils ont des idées qui brillent
+                        </p>
+                        <div class="poster-meta">
+                          <span class="poster-date" data-fr="09 Aôut 2025" data-en="09 August 2025">Aôut 2025</span>
+                        </div>
+                        <div class="poster-actions">
+                          <!-- Lien vers ton PDF réel -->
+                          <a href="6.png" class="btn primary btn-sm" download>
+                            <i class="fas fa-download"></i> Télécharger (PDF)
+                          </a>
+                          <div class="share-buttons">
+                            <!-- WhatsApp partage -->
+                            <a href="https://wa.me/qr/W7B3A5AFKKHOH1" 
+                               class="btn-icon" target="_blank" 
+                               title="Partager sur WhatsApp">
+                              <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <!-- Facebook partage -->
+                            <a href="https://www.instagram.com/kamwatech?igsh=dGU5bDZ6bnRyZW1j" 
+                               class="btn-icon" target="_blank" 
+                               title="Partager sur i'instagram">
+                              <i class="fab fa-facebook-f"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>                 <!-- Affiche 2 -->
+                    <div class="poster-item" data-month="april" data-theme="registration">
+                      <div class="poster-image">
+                        <img src="image/7.png" alt="Affiche Appel à candidatures">
+                      </div>
+                      <div class="poster-info">
+                        <h3 data-fr="Appel à candidatures" data-en="Join the KAMWA mouvement">Rejoignez le mouvement KAMWA.</h3>
+                        <p data-fr="Ils n'ont ni atelier, ni laboratoire... mais ils ont des idées qui brillent." 
+                           data-en="They have no workshop, no laboratory... but they have brilliant ideas..">
+                           Ils n'ont ni atelier, ni laboratoire... mais ils ont des idées qui brillent
+                        </p>
+                        <div class="poster-meta">
+                          <span class="poster-date" data-fr="16 Aôut 2025" data-en="16 August 2025">Aôut 2025</span>
+                        </div>
+                        <div class="poster-actions">
+                          <!-- Lien vers ton PDF réel -->
+                          <a href="image/7.png" class="btn primary btn-sm" download>
+                            <i class="fas fa-download"></i> Télécharger (PDF)
+                          </a>
+                          <div class="share-buttons">
+                            <!-- WhatsApp partage -->
+                            <a href="https://wa.me/qr/W7B3A5AFKKHOH1" 
+                               class="btn-icon" target="_blank" 
+                               title="Partager sur WhatsApp">
+                              <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <!-- Facebook partage -->
+                            <a href="https://www.instagram.com/kamwatech?igsh=dGU5bDZ6bnRyZW1j" 
+                               class="btn-icon" target="_blank" 
+                               title="Partager sur i'instagram">
+                              <i class="fab fa-facebook-f"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Affiche 3 -->
+                    <div class="poster-item" data-month="april" data-theme="registration">
+                      <div class="poster-image">
+                        <img src="image/8.png" alt="Affiche Appel à candidatures">
+                      </div>
+                      <div class="poster-info">
+                        <h3 data-fr="KAMWA recyclage" data-en="KAMWA recycling">KAMWA recyclage.</h3>
+                        <p data-fr="Un déchet, c'est souvent une invention qui n'a pas fini son chemin. KAMWA apprend aux jeunes à voir dans chaque bouteille, chaque métal usé, une pièce d'avenir." 
+                           data-en="Waste is often an invention that never quite reached its destination. KAMWA teaches young people to see in every bottle, every used piece of metal, a piece of the future.">
+                           Un déchet, c'est souvent une invention qui n'a pas fini son chemin. KAMWA apprend aux jeunes à voir dans chaque bouteille, chaque métal usé, une pièce d'avenir.
+                        </p>
+                        <div class="poster-meta">
+                          <span class="poster-date" data-fr="23 Aôut 2025" data-en="23 August 2025">Aôut 2025</span>
+                        </div>
+                        <div class="poster-actions">
+                          <!-- Lien vers ton PDF réel -->
+                          <a href="image/8.png" class="btn primary btn-sm" download>
+                            <i class="fas fa-download"></i> Télécharger (PDF)
+                          </a>
+                          <div class="share-buttons">
+                            <!-- WhatsApp partage -->
+                            <a href="https://wa.me/qr/W7B3A5AFKKHOH1" 
+                               class="btn-icon" target="_blank" 
+                               title="Partager sur WhatsApp">
+                              <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <!-- Facebook partage -->
+                            <a href="https://www.instagram.com/kamwatech?igsh=dGU5bDZ6bnRyZW1j" 
+                               class="btn-icon" target="_blank" 
+                               title="Partager sur i'instagram">
+                              <i class="fab fa-facebook-f"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <!-- Affiche 4 -->
+                    <div class="poster-item" data-month="april" data-theme="registration">
+                      <div class="poster-image">
+                        <img src="image/9.png" alt="Affiche Appel à candidatures">
+                      </div>
+                      <div class="poster-info">
+                        <h3 data-fr="sensibilisation" data-en="Awareness raising">Rejoignez le mouvement KAMWA.</h3>
+                        <p data-fr="L'innovation commence par l'imagination et la stratégie." 
+                           data-en="Innovation begins with imagination and strategy.">
+                           L'innovation commence par l'imagination et la stratégie.
+                        </p>
+                        <div class="poster-meta">
+                          <span class="poster-date" data-fr="30 Aôut 2025" data-en="30 August 2025">Aôut 2025</span>
+                        </div>
+                        <div class="poster-actions">
+                          <!-- Lien vers ton PDF réel -->
+                          <a href="image/9.png" class="btn primary btn-sm" download>
+                            <i class="fas fa-download"></i> Télécharger (PDF)
+                          </a>
+                          <div class="share-buttons">
+                            <!-- WhatsApp partage -->
+                            <a href="https://wa.me/qr/W7B3A5AFKKHOH1" 
+                               class="btn-icon" target="_blank" 
+                               title="Partager sur WhatsApp">
+                              <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <!-- Facebook partage -->
+                            <a href="https://www.instagram.com/kamwatech?igsh=dGU5bDZ6bnRyZW1j" 
+                               class="btn-icon" target="_blank" 
+                               title="Partager sur i'instagram">
+                              <i class="fab fa-facebook-f"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+         
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 data-fr="Contactez-nous" data-en="Contact us">Contactez-nous</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>kamwatech@gmail.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p data-fr="Lomé, Togo - Quartier Adidogomé" data-en="Lomé, Togo - Adidogomé District">Lomé, Togo - Quartier Hedzranawoe</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+228 96 22 28 21</p>
+                        </div>
+                        <div class="social-media">
+                            <a href="https://www.fb.com/l/6lp1kJRRR" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/kamwatech?igsh=dGU5bDZ6bnRyZW1j" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@blunaantoine1?_t=ZM-8yrrWt25ebA&_r=1" target="_blank"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">KAMWA</div>
+                <p class="footer-tagline" data-fr="Innover pour demain" data-en="Innovating for tomorrow">Innover pour demain</p>
+                <p class="copyright" data-fr="© 2025 KAMWA - Tous droits réservés" data-en="© 2025 KAMWA - All rights reserved">© 2025 KAMWA - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      //Variables et constantes
+const langToggleFr = document.getElementById('lang-fr');
+const langToggleEn = document.getElementById('lang-en');
+const menuIcon = document.querySelector('.menu-icon');
+const navLinks = document.querySelector('.nav-links');
+const participationForm = document.getElementById('participation-form');
+const contactForm = document.getElementById('contact-form');
+
+// Stockage des textes traduits (tous les éléments avec data-fr et data-en)
+const translatableElements = document.querySelectorAll('[data-fr][data-en]');
+
+// État global
+let currentLang = 'fr'; // Par défaut, le site est en français
+let isMenuOpen = false;
+
+// ========== FONCTIONS ==========
+
+/**
+ * Change la langue de l'interface
+ * @param {string} lang - Code de langue ('fr' ou 'en')
+ */
+function changeLang(lang) {
+    // Mettre à jour les boutons de langue
+    if (lang === 'fr') {
+        langToggleFr.classList.add('active');
+        langToggleEn.classList.remove('active');
+    } else {
+        langToggleFr.classList.remove('active');
+        langToggleEn.classList.add('active');
+    }
+    
+    // Mettre à jour tous les textes traduits
+    translatableElements.forEach(element => {
+        const translatedText = element.getAttribute(`data-${lang}`);
+        
+        // Pour les options de select
+        if (element.tagName === 'OPTION') {
+            element.textContent = translatedText;
+        } 
+        // Pour les autres éléments HTML
+        else {
+            element.textContent = translatedText;
+        }
+    });
+    
+    // Sauvegarder la préférence de langue
+    currentLang = lang;
+    localStorage.setItem('kamwaLang', lang);
+}
+
+/**
+ * Toggle le menu mobile
+ */
+function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+    navLinks.classList.toggle('active', isMenuOpen);
+    
+    // Changer l'icône en fonction de l'état du menu
+    menuIcon.innerHTML = isMenuOpen 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+}
+
+/**
+ * Ferme le menu mobile si ouvert
+ */
+function closeMenu() {
+    if (isMenuOpen) {
+        isMenuOpen = false;
+        navLinks.classList.remove('active');
+        menuIcon.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+}
+
+/**
+ * 
+ * Détection automatique de la langue du navigateur
+ */
+function detectBrowserLanguage() {
+    const savedLang = localStorage.getItem('kamwaLang');
+    if (savedLang) {
+        changeLang(savedLang);
+        return;
+    }
+    
+    // Si pas de préférence enregistrée, détecter la langue du navigateur
+    const browserLang = navigator.language || navigator.userLanguage;
+    if (browserLang.startsWith('en')) {
+        changeLang('en');
+    }
+    // Par défaut, français (déjà défini)
+}
+
+// ========== ÉCOUTEURS D'ÉVÉNEMENTS ==========
+
+// Changement de langue
+langToggleFr.addEventListener('click', () => changeLang('fr'));
+langToggleEn.addEventListener('click', () => changeLang('en'));
+
+// Menu mobile
+menuIcon.addEventListener('click', toggleMenu);
+
+// Fermer le menu lors du clic sur un lien
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
+
+// Fermer le menu lors du clic en dehors
+document.addEventListener('click', (e) => {
+    if (isMenuOpen && !e.target.closest('nav')) {
+        closeMenu();
+    }
+});
+
+// 
+// ========== ANIMATIONS ET EFFETS ==========
+
+/**
+ * Animation d'apparition au défilement
+ */
+function setupScrollAnimations() {
+    const elementsToAnimate = document.querySelectorAll('.gallery-item, .support-card, .participation-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    elementsToAnimate.forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(el);
+    });
+}
+
+// ========== INITIALISATION ==========
+document.addEventListener('DOMContentLoaded', function() {
+    // Détecter la langue du navigateur
+    detectBrowserLanguage();
+    
+    // Configurer les animations au défilement
+    setupScrollAnimations();
+    
+    console.log('Site KAMWA initialisé avec succès!');
+});
+// Fonctionnalités pour les filtres et la gestion des données
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialisation des données pour les campagnes et affiches
+    initializeData();
+    
+    // Filtres de campagnes
+    setupCampaignFilters();
+    
+    // Filtres d'affiches
+    setupPosterFilters();
+});
+
+// --- Gestion des données avec localStorage ---
+// Initialisation des données
+function initializeData() {
+    // Vérifier si les données existent déjà dans localStorage
+    if (!localStorage.getItem('kamwa_campaigns')) {
+        // Données par défaut pour les campagnes
+        const defaultCampaigns = [
+            {
+                id: "1",
+                titre: "Campagne \"Un souffle pour l'avenir\"",
+                titre_en: "'A Breath for the Future' Campaign",
+                description: "Vidéo de sensibilisation sur l'importance de l'innovation écologique au Togo.",
+                description_en: "Awareness video on the importance of ecological innovation in Togo.",
+                media_url: "#", // Lien fictif pour l'exemple
+                type: "video",
+                icon: "youtube",
+                date_publication: "2025-04-15",
+                date_display: "Avril 2025",
+                date_display_en: "April 2025",
+                plateforme: "Diffusé sur TV Togo et YouTube",
+                plateforme_en: "Broadcasted on TV Togo and YouTube"
+            },
+            {
+                id: "2",
+                titre: "Spot radio KAMWA",
+                titre_en: "KAMWA Radio Spot",
+                description: "Jingle promotionnel pour l'appel à candidatures des jeunes inventeurs.",
+                description_en: "Promotional jingle for the call for applications from young inventors.",
+                media_url: "#", // Lien fictif pour l'exemple
+                type: "audio",
+                date_publication: "2025-05-10",
+                date_display: "Mai 2025",
+                date_display_en: "May 2025",
+                plateforme: "Diffusé sur Radio Lomé",
+                plateforme_en: "Broadcasted on Radio Lomé"
+            },
+            {
+                id: "3",
+                titre: "Affiche \"Inventeurs de demain\"",
+                titre_en: "'Inventors of Tomorrow' Poster",
+                description: "Campagne visuelle présentant des jeunes togolais et leurs inventions innovantes.",
+                description_en: "Visual campaign featuring young Togolese and their innovative inventions.",
+                media_url: "#", // Lien fictif pour l'exemple
+                type: "visual",
+                date_publication: "2025-06-01",
+                date_display: "Juin 2025",
+                date_display_en: "June 2025",
+                plateforme: "Réseaux sociaux et écoles",
+                plateforme_en: "Social networks and schools"
+            },
+            {
+                id: "4",
+                titre: "Challenge TikTok \"Innove avec KAMWA\"",
+                titre_en: "'Innovate with KAMWA' TikTok Challenge",
+                description: "Série de vidéos courtes montrant comment transformer des objets du quotidien.",
+                description_en: "Series of short videos showing how to transform everyday objects.",
+                media_url: "#", // Lien fictif pour l'exemple
+                type: "video",
+                icon: "tiktok",
+                date_publication: "2025-03-20",
+                date_display: "Mars 2025",
+                date_display_en: "March 2025",
+                plateforme: "TikTok et Instagram",
+                plateforme_en: "TikTok and Instagram"
+            }
+        ];
+        localStorage.setItem('kamwa_campaigns', JSON.stringify(defaultCampaigns));
+    }
+    
+    if (!localStorage.getItem('kamwa_posters')) {
+        // Données par défaut pour les affiches
+        const defaultPosters = [
+            {
+                id: "1",
+                titre: "Appel à candidatures",
+                titre_en: "Call for applications",
+                description: "Participez au concours des jeunes inventeurs togolais.",
+                description_en: "Participate in the young Togolese inventors contest.",
+                image_url: "#", // Lien fictif pour l'exemple
+                bg_color: "var(--primary-color)",
+                date_publication: "2025-04-15",
+                date_display: "Avril 2025",
+                date_display_en: "April 2025",
+                categorie: "registration",
+                mois: "april"
+            },
+            {
+                id: "2",
+                titre: "Journée portes ouvertes",
+                titre_en: "Open House Day",
+                description: "Venez découvrir les créations des jeunes inventeurs au centre KAMWA.",
+                description_en: "Come discover the creations of young inventors at the KAMWA center.",
+                image_url: "#", // Lien fictif pour l'exemple
+                bg_color: "var(--secondary-color)",
+                date_publication: "2025-05-20",
+                date_display: "Mai 2025",
+                date_display_en: "May 2025",
+                categorie: "event",
+                mois: "may"
+            },
+            {
+                id: "3",
+                titre: "Soutenez nos inventeurs",
+                titre_en: "Support our inventors",
+                description: "Votre don permet d'acheter du matériel pour les ateliers KAMWA.",
+                description_en: "Your donation helps purchase equipment for KAMWA workshops.",
+                image_url: "#", // Lien fictif pour l'exemple
+                bg_color: "var(--tertiary-color)",
+                date_publication: "2025-06-10",
+                date_display: "Juin 2025",
+                date_display_en: "June 2025",
+                categorie: "donation",
+                mois: "june"
+            },
+            {
+                id: "4",
+                titre: "L'innovation durable",
+                titre_en: "Sustainable innovation",
+                description: "Comment transformer les déchets en opportunités d'innovation.",
+                description_en: "How to transform waste into innovation opportunities.",
+                image_url: "#", // Lien fictif pour l'exemple
+                bg_color: "var(--primary-color)",
+                date_publication: "2025-03-05",
+                date_display: "Mars 2025",
+                date_display_en: "March 2025",
+                categorie: "awareness",
+                mois: "march"
+            }
+        ];
+        localStorage.setItem('kamwa_posters', JSON.stringify(defaultPosters));
+    }
+    
+    // Charger les données
+    loadCampaignsFromStorage();
+    loadPostersFromStorage();
+}
+
+// Charger les campagnes depuis localStorage
+function loadCampaignsFromStorage() {
+    const campaigns = JSON.parse(localStorage.getItem('kamwa_campaigns'));
+    const campaignsGrid = document.querySelector('.campaigns-grid');
+    
+    if (!campaignsGrid) return;
+    
+    // Vider la grille
+    campaignsGrid.innerHTML = '';
+    
+    // Créer les éléments pour chaque campagne
+    campaigns.forEach(campaign => {
+        const campaignItem = createCampaignElement(campaign);
+        campaignsGrid.appendChild(campaignItem);
+    });
+    
+    // Réinitialiser les écouteurs d'événements
+    setupCampaignFilters();
+}
+
+// Créer un élément de campagne
+function createCampaignElement(campaign) {
+    const item = document.createElement('div');
+    item.className = 'campaign-item';
+    item.setAttribute('data-category', campaign.type);
+    
+    // Déterminer le contenu média selon le type
+    let mediaContent = '';
+    if (campaign.type === 'video') {
+        const iconClass = campaign.icon === 'tiktok' ? 'fab fa-tiktok' : 'fab fa-youtube';
+        const iconColor = campaign.icon === 'tiktok' ? 'var(--tertiary-color)' : 'var(--primary-color)';
+        mediaContent = `
+            <div class="campaign-media">
+                <div class="video-embed" style="background-color: var(--bg-alternate); height: 200px; display: flex; align-items: center; justify-content: center;">
+                    <i class="${iconClass}" style="font-size: 48px; color: ${iconColor};"></i>
+                </div>
+            </div>
+        `;
+    } else if (campaign.type === 'audio') {
+        mediaContent = `
+            <div class="campaign-media">
+                <div class="audio-player" style="background-color: var(--bg-alternate); padding: 20px; border-radius: var(--border-radius);">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <button class="play-button" style="background-color: var(--primary-color); color: white; width: 40px; height: 40px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="audio-progress" style="height: 6px; flex-grow: 1; background-color: #ddd; border-radius: 3px; position: relative;">
+                            <div style="position: absolute; width: 30%; height: 100%; background-color: var(--primary-color); border-radius: 3px;"></div>
+                        </div>
+                        <span class="audio-time">0:30</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else if (campaign.type === 'visual') {
+        mediaContent = `
+            <div class="campaign-media">
+                <div class="image-container" style="background-color: var(--secondary-color); height: 200px; display: flex; align-items: center; justify-content: center; border-radius: var(--border-radius);">
+                    <i class="far fa-image" style="font-size: 48px; color: white;"></i>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Ajouter le contenu à l'élément
+    item.innerHTML = `
+        ${mediaContent}
+        <div class="campaign-info">
+            <h3 data-fr="${campaign.titre}" data-en="${campaign.titre_en}">${campaign.titre}</h3>
+            <div class="campaign-meta">
+                <span class="campaign-date" data-fr="${campaign.date_display}" data-en="${campaign.date_display_en}">${campaign.date_display}</span>
+                <span class="campaign-channel" data-fr="${campaign.plateforme}" data-en="${campaign.plateforme_en}">${campaign.plateforme}</span>
+            </div>
+            <p data-fr="${campaign.description}" data-en="${campaign.description_en}">${campaign.description}</p>
+            <div class="campaign-actions">
+                ${campaign.type !== 'video' ? `
+                <a href="#" class="btn-icon download-campaign" data-id="${campaign.id}" title="Télécharger" data-fr-title="Télécharger" data-en-title="Download">
+                    <i class="fas fa-download"></i>
+                </a>` : ''}
+                <a href="#" class="btn-icon share-campaign" data-id="${campaign.id}" title="Partager" data-fr-title="Partager" data-en-title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </a>
+            </div>
+        </div>
+    `;
+    
+    return item;
+}
+
+// Charger les affiches depuis localStorage
+function loadPostersFromStorage() {
+    const posters = JSON.parse(localStorage.getItem('kamwa_posters'));
+    const postersGrid = document.querySelector('.posters-grid');
+    
+    if (!postersGrid) return;
+    
+    // Vider la grille
+    postersGrid.innerHTML = '';
+    
+    // Créer les éléments pour chaque affiche
+    posters.forEach(poster => {
+        const posterItem = createPosterElement(poster);
+        postersGrid.appendChild(posterItem);
+    });
+    
+    // Réinitialiser les écouteurs d'événements
+    setupPosterFilters();
+}
+
+// Créer un élément d'affiche
+function createPosterElement(poster) {
+    const item = document.createElement('div');
+    item.className = 'poster-item';
+    item.setAttribute('data-month', poster.mois);
+    item.setAttribute('data-theme', poster.categorie);
+    
+    // Ajouter le contenu à l'élément
+    item.innerHTML = `
+        <div class="poster-image" style="background-color: ${poster.bg_color}; height: 280px; border-radius: var(--border-radius) var(--border-radius) 0 0; display: flex; align-items: center; justify-content: center;">
+            <i class="far fa-file-image" style="font-size: 48px; color: white;"></i>
+        </div>
+        <div class="poster-info">
+            <h3 data-fr="${poster.titre}" data-en="${poster.titre_en}">${poster.titre}</h3>
+            <p data-fr="${poster.description}" data-en="${poster.description_en}">${poster.description}</p>
+            <div class="poster-meta">
+                <span class="poster-date" data-fr="${poster.date_display}" data-en="${poster.date_display_en}">${poster.date_display}</span>
+            </div>
+            <div class="poster-actions">
+                <a href="#" class="btn primary btn-sm download-poster" data-id="${poster.id}" data-fr="Télécharger (PDF)" data-en="Download (PDF)">
+                    <i class="fas fa-download"></i> <span data-fr="Télécharger (PDF)" data-en="Download (PDF)">Télécharger (PDF)</span>
+                </a>
+                <div class="share-buttons">
+                    <a href="#" class="btn-icon share-poster-whatsapp" data-id="${poster.id}" title="Partager sur WhatsApp" data-fr-title="Partager sur WhatsApp" data-en-title="Share on WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="btn-icon share-poster-facebook" data-id="${poster.id}" title="Partager sur Facebook" data-fr-title="Partager sur Facebook" data-en-title="Share on Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    return item;
+}
+
+// Configuration des filtres de campagnes
+function setupCampaignFilters() {
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const campaignItems = document.querySelectorAll('.campaign-item');
+    
+    if (!filterTabs.length) return;
+    
+    // Supprimer les écouteurs d'événements existants
+    filterTabs.forEach(tab => {
+        tab.replaceWith(tab.cloneNode(true));
+    });
+    
+    // Ajouter de nouveaux écouteurs d'événements
+    document.getElementById('month-filter').addEventListener('change', filterPosters);
+    document.getElementById('theme-filter').addEventListener('change', filterPosters);
+    
+    // Ajouter des écouteurs pour les boutons d'action
+    document.querySelectorAll('.download-poster').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('data-id');
+            downloadPoster(id);
+        });
+    });
+    
+    document.querySelectorAll('.share-poster-whatsapp, .share-poster-facebook').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('data-id');
+            const platform = this.classList.contains('share-poster-whatsapp') ? 'whatsapp' : 'facebook';
+            sharePoster(id, platform);
+        });
+    });
+}
+
+// Fonctions pour le téléchargement et le partage
+function downloadCampaign(id) {
+    const campaigns = JSON.parse(localStorage.getItem('kamwa_campaigns'));
+    const campaign = campaigns.find(c => c.id === id);
+    
+    if (!campaign) return;
+    
+    alert(`Téléchargement de la campagne: ${campaign.titre}`);
+    console.log(`Downloading campaign: ${campaign.titre}`);
+    // En production, cela devrait déclencher un téléchargement réel
+}
+
+function shareCampaign(id) {
+    const campaigns = JSON.parse(localStorage.getItem('kamwa_campaigns'));
+    const campaign = campaigns.find(c => c.id === id);
+    
+    if (!campaign) return;
+    
+    // Simuler le partage
+    if (navigator.share) {
+        navigator.share({
+            title: campaign.titre,
+            text: campaign.description,
+            url: window.location.href + '#campaigns'
+        })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing:', error));
+    } else {
+        alert(`Partage de la campagne: ${campaign.titre}`);
+        console.log(`Sharing campaign: ${campaign.titre}`);
+    }
+}
+
+function downloadPoster(id) {
+    const posters = JSON.parse(localStorage.getItem('kamwa_posters'));
+    const poster = posters.find(p => p.id === id);
+    
+    if (!poster) return;
+    
+    alert(`Téléchargement de l'affiche: ${poster.titre}`);
+    console.log(`Downloading poster: ${poster.titre}`);
+    // En production, cela devrait déclencher un téléchargement réel
+}
+
+function sharePoster(id, platform) {
+    const posters = JSON.parse(localStorage.getItem('kamwa_posters'));
+    const poster = posters.find(p => p.id === id);
+    
+    if (!poster) return;
+    
+    // Simuler le partage
+    if (platform === 'whatsapp') {
+        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(poster.titre + ' - ' + poster.description + ' ' + window.location.href + '#posters')}`;
+        window.open(whatsappUrl, '_blank');
+    } else if (platform === 'facebook') {
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href + '#posters')}&quote=${encodeURIComponent(poster.titre)}`;
+        window.open(facebookUrl, '_blank');
+    }
+    
+    console.log(`Sharing poster: ${poster.titre} on ${platform}`);
+}
+
+// Fonctions pour l'interface d'administration (pour une version future)
+// Ces fonctions seraient utilisées dans une interface d'administration protégée par mot de passe
+
+function addNewCampaign(campaignData) {
+    const campaigns = JSON.parse(localStorage.getItem('kamwa_campaigns'));
+    const newId = String(Math.max(...campaigns.map(c => parseInt(c.id))) + 1);
+    
+    const newCampaign = {
+        id: newId,
+        ...campaignData
+    };
+    
+    campaigns.push(newCampaign);
+    localStorage.setItem('kamwa_campaigns', JSON.stringify(campaigns));
+    loadCampaignsFromStorage();
+}
+
+function updateCampaign(id, campaignData) {
+    const campaigns = JSON.parse(localStorage.getItem('kamwa_campaigns'));
+    const index = campaigns.findIndex(c => c.id === id);
+    
+    if (index !== -1) {
+        campaigns[index] = {
+            ...campaigns[index],
+            ...campaignData
+        };
+        
+        localStorage.setItem('kamwa_campaigns', JSON.stringify(campaigns));
+        loadCampaignsFromStorage();
+    }
+}
+
+function deleteCampaign(id) {
+    const campaigns = JSON.parse(localStorage.getItem('kamwa_campaigns'));
+    const filteredCampaigns = campaigns.filter(c => c.id !== id);
+    
+    localStorage.setItem('kamwa_campaigns', JSON.stringify(filteredCampaigns));
+    loadCampaignsFromStorage();
+}
+
+function addNewPoster(posterData) {
+    const posters = JSON.parse(localStorage.getItem('kamwa_posters'));
+    const newId = String(Math.max(...posters.map(p => parseInt(p.id))) + 1);
+    
+    const newPoster = {
+        id: newId,
+        ...posterData
+    };
+    
+    posters.push(newPoster);
+    localStorage.setItem('kamwa_posters', JSON.stringify(posters));
+    loadPostersFromStorage();
+}
+
+function updatePoster(id, posterData) {
+    const posters = JSON.parse(localStorage.getItem('kamwa_posters'));
+    const index = posters.findIndex(p => p.id === id);
+    
+    if (index !== -1) {
+        posters[index] = {
+            ...posters[index],
+            ...posterData
+        };
+        
+        localStorage.setItem('kamwa_posters', JSON.stringify(posters));
+        loadPostersFromStorage();
+    }
+}
+
+function deletePoster(id) {
+    const posters = JSON.parse(localStorage.getItem('kamwa_posters'));
+    const filteredPosters = posters.filter(p => p.id !== id);
+    
+    localStorage.setItem('kamwa_posters', JSON.stringify(filteredPosters));
+    loadPostersFromStorage();
+}
+
+    </script>
+</body>
+
+</html>
